@@ -1,5 +1,9 @@
 import { NativeModules, Platform } from 'react-native';
 
+import type { AppSyncResponse } from './types';
+
+export * from './types';
+
 const LINKING_ERROR =
   `The package 'appsonair-react-native-appsync' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
@@ -17,7 +21,7 @@ const AppsonairReactNativeAppsync = NativeModules.AppsonairReactNativeAppsync
       }
     );
 
-export async function sync() {
+export const sync = async (): Promise<AppSyncResponse> => {
   try {
     const response = await AppsonairReactNativeAppsync.sync();
     const parsedData: AppSyncResponse = JSON.parse(response);
@@ -26,4 +30,4 @@ export async function sync() {
     console.error(error);
     throw new Error('Error syncing with AppsOnAir');
   }
-}
+};

@@ -1,4 +1,4 @@
-interface AppSyncResponse {
+export interface AppSyncResponse {
   id: string;
   appName: string;
   isMaintenance: boolean;

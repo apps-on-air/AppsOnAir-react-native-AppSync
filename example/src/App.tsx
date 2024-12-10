@@ -1,12 +1,22 @@
-import { StyleSheet, View, Text } from 'react-native';
-import { sync } from 'appsonair-react-native-appsync';
-
-sync();
+import { useState, useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { sync, type AppSyncResponse } from 'appsonair-react-native-appsync';
 
 export default function App() {
+  const [data, setData] = useState<AppSyncResponse | null>(null);
+
+  useEffect(() => {
+    const main = async () => {
+      const syncData = await sync();
+      setData(syncData);
+    };
+
+    main();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Test</Text>
+      <Text>{JSON.stringify(data, null, 2)}</Text>
     </View>
   );
 }
