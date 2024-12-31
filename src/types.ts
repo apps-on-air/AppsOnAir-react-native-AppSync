@@ -25,3 +25,7 @@ export interface AppSyncResponse {
   };
   updatedAt: string;
 }
+
+export interface Options {
+  showNativeUI: boolean;
+}

@@ -1,6 +1,6 @@
 import { NativeModules, Platform } from 'react-native';
 
-import type { AppSyncResponse } from './types';
+import type { AppSyncResponse, Options } from './types';
 
 export * from './types';
 
@@ -21,13 +21,20 @@ const AppsonairReactNativeAppsync = NativeModules.AppsonairReactNativeAppsync
       }
     );
 
-export const sync = async (): Promise<AppSyncResponse> => {
-  try {
-    const response = await AppsonairReactNativeAppsync.sync();
-    const parsedData: AppSyncResponse = JSON.parse(response);
-    return parsedData;
-  } catch (error) {
-    console.error(error);
-    throw new Error('Error syncing with AppsOnAir');
+/**
+ * Sync data with the server.
+ *
+ * @param {Options} options
+ * @property {boolean} [options.showNativeUI=true] Show native UI while syncing.
+ *
+ * @returns {Promise<AppSyncResponse>}
+ * @throws {Error}
+ */
+export const sync = async (
+  options: Options = {
+    showNativeUI: true,
   }
+): Promise<AppSyncResponse> => {
+  const result = await AppsonairReactNativeAppsync.sync(options);
+  return Platform.OS === 'android' ? JSON.parse(result) : result;
 };

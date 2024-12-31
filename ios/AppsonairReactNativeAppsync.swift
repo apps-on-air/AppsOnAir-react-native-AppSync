@@ -1,10 +1,18 @@
-// import AppsOnAir_AppSync
+import AppsOnAir_AppSync
 
 @objc(AppsonairReactNativeAppsync)
 class AppsonairReactNativeAppsync: NSObject {
-  // let appSyncService = AppSyncService()
 
-  // @objc func sync() {
-  //   appSyncService.sync()
-  // }
+    @objc func sync(_ directory: NSDictionary, resolver: @escaping RCTPromiseResolveBlock, rejecter: @escaping RCTPromiseRejectBlock) {
+        DispatchQueue.main.async {
+            let appSyncService = AppSyncService()
+            appSyncService.sync(directory: directory) { result in
+                if let error = result["error"] as? String {
+                    rejecter("SYNC_ERROR", error, nil)
+                } else {
+                    resolver(result)
+                }
+            }
+        }
+    }
 }
