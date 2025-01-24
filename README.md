@@ -108,9 +108,6 @@ If you want to show a custom alert for app updates, pass options in the `sync` m
 >  Set to `false` to disable the default native UI for the app update alert.  
 >  Default: `true`.
 
-**Important**:  
-If `showNativeUI` is set to `false`, you must provide a custom widget or logic for the update alert. Not doing so will throw an exception.
-
 ```typescript
 import React, { useEffect, useState } from "react";
 import { Alert, Linking, Text, View } from "react-native";
