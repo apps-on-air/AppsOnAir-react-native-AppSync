@@ -12,7 +12,7 @@
       android:supportsRtl="true">
       <meta-data
         android:name="appId"
-        android:value="16e5ccf5-0da8-4be9-bdf3-4f77f05ca67d" />
+        android:value="XXXXX-XXXXXX" />
       <meta-data
        android:name="com.appsonair.icon"
        android:resource="@mipmap/ic_launcher_round" />
