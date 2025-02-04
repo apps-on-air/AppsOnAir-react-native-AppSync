@@ -1,8 +1,8 @@
-export interface AppSyncResponse {
+export interface AppSyncNativeResponse {
   id: string;
   appName: string;
-  isMaintenance: boolean;
   appLogo: string;
+  isMaintenance: boolean;
   updateData: {
     isIOSUpdate: boolean;
     iosBuildNumber: string | null;
@@ -24,6 +24,21 @@ export interface AppSyncResponse {
     isMaintenance: boolean;
   };
   updatedAt: string;
+}
+
+export interface AppSyncResponse {
+  id: string;
+  appName: string;
+  appLogo: string;
+  isMaintenance: boolean;
+  updateData: {
+    isUpdateEnabled: boolean;
+    isForcedUpdate: boolean;
+    updateLink: string | null;
+    buildNumber: number | null;
+    minBuildVersion: number | null;
+  };
+  updatedAt: Date;
 }
 
 export interface Options {

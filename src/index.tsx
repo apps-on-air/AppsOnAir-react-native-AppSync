@@ -1,6 +1,6 @@
 import { NativeModules, Platform } from 'react-native';
 
-import type { AppSyncResponse, Options } from './types';
+import type { AppSyncNativeResponse, AppSyncResponse, Options } from './types';
 
 export * from './types';
 
@@ -36,5 +36,50 @@ export const sync = async (
   }
 ): Promise<AppSyncResponse> => {
   const result = await AppsonairReactNativeAppsync.sync(options);
-  return Platform.OS === 'android' ? JSON.parse(result) : result;
+
+  const data = convertToPlatformSpecificFormat(
+    Platform.OS === 'android' ? JSON.parse(result) : result,
+    Platform.OS
+  );
+
+  return data;
+};
+
+const convertToPlatformSpecificFormat = (
+  data: AppSyncNativeResponse,
+  platform: typeof Platform.OS
+): AppSyncResponse => {
+  const updateData = data.updateData;
+
+  return {
+    id: data.id,
+    appName: data.appName,
+    appLogo: data.appLogo,
+    isMaintenance: data.isMaintenance,
+    updateData: {
+      isUpdateEnabled:
+        platform === 'ios'
+          ? updateData.isIOSUpdate
+          : updateData.isAndroidUpdate,
+      isForcedUpdate:
+        platform === 'ios'
+          ? updateData.isIOSForcedUpdate
+          : updateData.isAndroidForcedUpdate,
+      updateLink:
+        platform === 'ios'
+          ? updateData.iosUpdateLink
+          : updateData.androidUpdateLink,
+      buildNumber: Number(
+        platform === 'ios'
+          ? updateData.iosBuildNumber
+          : updateData.androidBuildNumber
+      ),
+      minBuildVersion: Number(
+        platform === 'ios'
+          ? updateData.iosMinBuildVersion
+          : updateData.androidMinBuildVersion
+      ),
+    },
+    updatedAt: new Date(data.updatedAt),
+  };
 };
