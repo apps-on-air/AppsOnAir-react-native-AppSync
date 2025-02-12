@@ -1,19 +1,14 @@
-export interface AppSyncNativeResponse {
+export interface AppSyncResponse {
   id: string;
   appName: string;
   appLogo: string;
   isMaintenance: boolean;
   updateData: {
-    isIOSUpdate: boolean;
-    iosBuildNumber: string | null;
-    iosMinBuildVersion: string | null;
-    iosUpdateLink: string | null;
-    isIOSForcedUpdate: boolean;
-    isAndroidUpdate: boolean;
-    androidBuildNumber: string | null;
-    androidMinBuildVersion: string | null;
-    androidUpdateLink: string | null;
-    isAndroidForcedUpdate: boolean;
+    isUpdateEnabled: boolean;
+    buildNumber: string;
+    minBuildVersion: string;
+    updateLink: string;
+    isForcedUpdate: boolean;
   };
   maintenanceData: {
     title: string | null;
@@ -24,21 +19,6 @@ export interface AppSyncNativeResponse {
     isMaintenance: boolean;
   };
   updatedAt: string;
-}
-
-export interface AppSyncResponse {
-  id: string;
-  appName: string;
-  appLogo: string;
-  isMaintenance: boolean;
-  updateData: {
-    isUpdateEnabled: boolean;
-    isForcedUpdate: boolean;
-    updateLink: string | null;
-    buildNumber: number | null;
-    minBuildVersion: number | null;
-  };
-  updatedAt: Date;
 }
 
 export interface Options {
