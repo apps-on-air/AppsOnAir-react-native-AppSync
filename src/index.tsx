@@ -36,5 +36,6 @@ export const sync = async (
   }
 ): Promise<AppSyncResponse> => {
   const result = await AppsonairReactNativeAppsync.sync(options);
+
   return Platform.OS === 'android' ? JSON.parse(result) : result;
 };

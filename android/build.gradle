@@ -97,6 +97,6 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  implementation 'com.github.apps-on-air:AppsOnAir-android-AppSync:v1.0.4'
+  implementation 'com.github.apps-on-air:AppsOnAir-android-AppSync:1.1.0'
 }
 

@@ -121,14 +121,14 @@ const App = () => {
       setData(res);
 
       // Custom alert for android app update
-      if (res.updateAvailable) {
+      if (res.updateData.isUpdateEnabled) {
         Alert.alert(
           "Update Available",
           "A new version of the app is available. Please update to the latest version.",
           [
             {
               text: "OK",
-              onPress: () => Linking.openURL(res.updateData.androidUpdateLink!),
+              onPress: () => Linking.openURL(res.updateData.updateLink!),
             },
           ]
         );

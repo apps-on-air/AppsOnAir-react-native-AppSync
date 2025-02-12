@@ -1,6 +1,6 @@
 {
   "name": "appsonair-react-native-appsync",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Appsonair services for force update and maintenance for react-native mobile apps.",
   "source": "src/index",
   "main": "lib/commonjs/index",
