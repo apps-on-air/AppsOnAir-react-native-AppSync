@@ -1,5 +1,9 @@
 ## 0.2.0
 
+- Updated native iOS dependency
+
+## 0.2.0
+
 - Native dependencies version upgrade
 
 - Standardized the update alert response across platforms.
