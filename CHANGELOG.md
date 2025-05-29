@@ -1,3 +1,7 @@
+## 0.3.0
+
+- Update native iOS dependecy
+
 ## 0.2.0
 
 - Native dependencies version upgrade
