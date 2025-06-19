@@ -11,6 +11,14 @@
 
 #### To learn more about AppsOnAir AppSync, please visit the [AppsOnAir](https://documentation.appsonair.com) website.
 
+## Expo Setup
+
+If you're working with this Expo project, make sure to run:
+
+```sh md title="Terminal"
+npx expo prebuild
+```
+
 ## Android Setup
 
 ### Minimum Requirements
