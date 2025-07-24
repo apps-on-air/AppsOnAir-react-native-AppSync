@@ -1,21 +1,16 @@
 {
   "name": "appsonair-react-native-appsync",
   "version": "0.3.1",
-  "description": "Appsonair services for force update and maintenance for react-native mobile apps.",
-  "source": "src/index",
-  "main": "lib/commonjs/index",
-  "module": "lib/module/index",
+  "description": "Appsonair services for force update and maintenance for react-native mobile applications.",
+  "main": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./lib/typescript/module/src/index.d.ts",
-        "default": "./lib/module/index.js"
-      },
-      "require": {
-        "types": "./lib/typescript/commonjs/src/index.d.ts",
-        "default": "./lib/commonjs/index.js"
-      }
-    }
+      "source": "./src/index.tsx",
+      "types": "./lib/typescript/src/index.d.ts",
+      "default": "./lib/module/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "src",
@@ -43,12 +38,21 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
-    "release": "release-it"
+    "release": "release-it --only-version"
   },
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "app-maintenance",
+    "maintenance-mode",
+    "downtime",
+    "offline-message",
+    "maintenance-screen",
+    "app-update",
+    "force-update",
+    "optional-update",
+    "update-alert"
   ],
   "repository": {
     "type": "git",
@@ -64,29 +68,29 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "17.0.2",
-    "@evilmartians/lefthook": "1.5.0",
-    "@react-native-community/cli": "15.0.1",
-    "@react-native/eslint-config": "0.73.1",
+    "@commitlint/config-conventional": "19.6.0",
+    "@eslint/compat": "1.2.7",
+    "@eslint/eslintrc": "3.3.0",
+    "@eslint/js": "9.22.0",
+    "@react-native-community/cli": "15.0.0-alpha.2",
+    "@react-native/babel-preset": "0.79.2",
+    "@react-native/eslint-config": "0.78.0",
     "@release-it/conventional-changelog": "9.0.2",
     "@types/jest": "29.5.5",
-    "@types/react": "18.2.44",
-    "commitlint": "17.0.2",
+    "@types/react": "19.0.0",
+    "commitlint": "19.6.1",
     "del-cli": "5.1.0",
-    "eslint": "8.51.0",
-    "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-prettier": "5.0.1",
+    "eslint": "9.22.0",
+    "eslint-config-prettier": "10.1.1",
+    "eslint-plugin-prettier": "5.2.3",
     "jest": "29.7.0",
     "prettier": "3.0.3",
-    "react": "18.3.1",
-    "react-native": "0.76.5",
-    "react-native-builder-bob": "0.35.2",
+    "react": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-builder-bob": "0.40.13",
     "release-it": "17.10.0",
     "turbo": "1.10.7",
-    "typescript": "5.2.2"
-  },
-  "resolutions": {
-    "@types/react": "18.2.44"
+    "typescript": "5.8.3"
   },
   "peerDependencies": {
     "react": "*",
@@ -121,34 +125,12 @@
     },
     "plugins": {
       "@release-it/conventional-changelog": {
-        "preset": "angular"
+        "preset": {
+          "name": "angular"
+        }
       }
     }
   },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@react-native",
-      "prettier"
-    ],
-    "rules": {
-      "react/react-in-jsx-scope": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          "quoteProps": "consistent",
-          "singleQuote": true,
-          "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false
-        }
-      ]
-    }
-  },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
   "prettier": {
     "quoteProps": "consistent",
     "singleQuote": true,
@@ -161,12 +143,6 @@
     "output": "lib",
     "targets": [
       [
-        "commonjs",
-        {
-          "esm": true
-        }
-      ],
-      [
         "module",
         {
           "esm": true
@@ -175,15 +151,22 @@
       [
         "typescript",
         {
-          "project": "tsconfig.build.json",
-          "esm": true
+          "project": "tsconfig.build.json"
         }
       ]
     ]
   },
+  "codegenConfig": {
+    "name": "AppsonairReactNativeAppsyncSpec",
+    "type": "modules",
+    "jsSrcsDir": "src",
+    "android": {
+      "javaPackageName": "com.appsonairreactnativeappsync"
+    }
+  },
   "create-react-native-library": {
-    "type": "legacy-module",
-    "languages": "kotlin-swift",
-    "version": "0.45.5"
+    "languages": "kotlin-objc",
+    "type": "turbo-module",
+    "version": "0.52.0"
   }
 }

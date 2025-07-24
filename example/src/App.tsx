@@ -17,7 +17,6 @@ export default function App() {
    * This function calls the `sync` method to initiate data synchronization.
    * Logs the result on success and logs an error message on failure.
    */
-
   const handleSync = async () => {
     try {
       const result = await sync();

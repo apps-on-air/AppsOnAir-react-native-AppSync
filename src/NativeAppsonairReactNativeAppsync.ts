@@ -1,3 +1,10 @@
+import type { TurboModule } from 'react-native';
+import { TurboModuleRegistry } from 'react-native';
+
+export interface SyncOptions {
+  showNativeUI: boolean;
+}
+
 export interface AppSyncResponse {
   id: string;
   appName: string;
@@ -21,6 +28,10 @@ export interface AppSyncResponse {
   updatedAt: string;
 }
 
-export interface Options {
-  showNativeUI: boolean;
+export interface Spec extends TurboModule {
+  sync(options: SyncOptions): Promise<AppSyncResponse | string>;
 }
+
+export default TurboModuleRegistry.getEnforcing<Spec>(
+  'AppsonairReactNativeAppsync'
+);
