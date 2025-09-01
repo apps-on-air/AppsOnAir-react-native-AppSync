@@ -48,7 +48,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>AppsOnAirAPIKey</key>
-	<string>XXXXX-XXXXXX</string>
+	<key>AppsonairAppId</key>
+	<string>APP_ID</string>
 </dict>
 </plist>
