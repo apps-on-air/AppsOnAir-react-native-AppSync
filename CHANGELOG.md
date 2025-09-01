@@ -1,3 +1,7 @@
+## 1.0.0
+
+- Dependencies upgrade and improvements
+
 ## 0.4.0
 
 - Update native dependency
