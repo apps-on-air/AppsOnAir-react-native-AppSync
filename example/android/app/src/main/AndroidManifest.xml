@@ -11,8 +11,8 @@
       android:theme="@style/AppTheme"
       android:supportsRtl="true">
       <meta-data
-        android:name="appId"
-        android:value="XXXXX-XXXXXX" />
+        android:name="AppsonairAppId"
+        android:value="APP_ID" />
       <meta-data
        android:name="com.appsonair.icon"
        android:resource="@mipmap/ic_launcher_round" />
