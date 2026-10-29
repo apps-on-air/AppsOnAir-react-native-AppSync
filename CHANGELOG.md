@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Update native Android dependency to 1.2.1 (fixes AppUpdateActivity crash when started without extras)
+
 ## 1.0.2
 
 - Dependencies upgrade and improvements
