@@ -1,3 +1,7 @@
+## Unreleased
+
+- Android: keep a forced update screen up when opening the app from its launcher icon or a notification clears it (`singleTask` MainActivity, the React Native default), instead of leaving the outdated build usable until the next `sync()`
+
 ## 1.0.3
 
 - Update native Android dependency to 1.2.1 (fixes AppUpdateActivity crash when started without extras)
