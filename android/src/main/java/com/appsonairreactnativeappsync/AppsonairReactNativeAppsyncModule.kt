@@ -22,6 +22,10 @@ class AppsonairReactNativeAppsyncModule(reactContext: ReactApplicationContext) :
   fun sync(options: ReadableMap, promise: Promise) {
     val payload = options.toMap()
 
+    // Shows a forced update screen again if opening the app from its launcher
+    // icon or a notification clears it (singleTask MainActivity).
+    ForcedUpdateGuard.install(reactApplicationContext)
+
     AppSyncService.sync(
       reactApplicationContext,
       payload,
