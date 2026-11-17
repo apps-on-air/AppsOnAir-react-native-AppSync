@@ -1,3 +1,9 @@
+## 1.1.0
+
+- Update native iOS dependency to 1.4.0 (iOS 27 / Xcode 27 support, UIScene-based window resolution)
+- Update native Android dependency to 1.2.2 (fixes excessive memory use when loading the maintenance image)
+- **Note:** The native iOS SDK now requires iOS 15.0 or later
+
 ## 1.0.3
 
 - Update native Android dependency to 1.2.1 (fixes AppUpdateActivity crash when started without extras)
