@@ -10,6 +10,8 @@
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
+  // The window is created by SceneDelegate (UIScene life cycle, required from iOS 27 SDK).
+  self.automaticallyLoadReactNativeWindow = NO;
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
